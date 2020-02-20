@@ -1,0 +1,33 @@
+{
+  "name": "cineteca-api",
+  "version": "1.0.0",
+  "description": "National Cineteca API made with Typescript scraping information from https://www.cinetecanacional.net/",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "start": "ts-node dist/index.js",
+    "build": "tsc -p ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gdaguilarc/cineteca-api.git"
+  },
+  "author": "David Aguilar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gdaguilarc/cineteca-api/issues"
+  },
+  "homepage": "https://github.com/gdaguilarc/cineteca-api#readme",
+  "dependencies": {
+    "@types/express": "^4.17.2",
+    "@types/node": "^13.7.0",
+    "cheerio": "^1.0.0-rc.3",
+    "express": "^4.17.1",
+    "moment": "^2.24.0",
+    "pug": "^2.0.4",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.5",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5"
+  }
+}
