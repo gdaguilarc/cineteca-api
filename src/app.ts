@@ -1,16 +1,22 @@
 import * as express from "express";
 import { Application } from "express";
+import * as hbs from "express-handlebars";
+import IRouterBase from "interfaces/IRouterBase";
 
 class App {
   public app: Application;
   public port: number;
 
-  constructor(appInit: { port: number; middleWares: any; controllers: any }) {
+  constructor(appInit: {
+    port: number;
+    middleWares: any;
+    mainRouter: IRouterBase;
+  }) {
     this.app = express();
     this.port = appInit.port;
 
     this.middlewares(appInit.middleWares);
-    this.routes(appInit.controllers);
+    this.routes(appInit.mainRouter);
     this.assets();
     this.template();
   }
@@ -23,12 +29,8 @@ class App {
     });
   }
 
-  private routes(controllers: {
-    forEach: (arg0: (controller: any) => void) => void;
-  }) {
-    controllers.forEach(controller => {
-      this.app.use("/", controller.router);
-    });
+  private routes(mainRouter: IRouterBase) {
+    this.app.use("/", mainRouter.getRouter());
   }
 
   private assets() {
